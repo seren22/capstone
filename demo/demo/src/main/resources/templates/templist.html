@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /* CSS 스타일 설정 */
+        .container {
+            text-align: center; /* 컨테이너 내용 가운데 정렬 */
+        }
+        table {
+            width: 100%; /* 테이블 전체 너비 설정 */
+            border-collapse: collapse; /* 테두리 겹치도록 설정 */
+        }
+        th, td {
+            border: 1px solid black; /* 셀 테두리 스타일 설정 */
+            padding: 10px; /* 셀 내부 여백 설정 */
+        }
+        th {
+            background-color: #007bff; /* 헤더 배경색 설정 */
+            color: white; /* 헤더 글자색 설정 */
+        }
+        tr {
+            background-color: #f2f2f2; /* 항목 배경색 설정 */
+        }
+        tr:hover {
+            background-color: #cce5ff; /* 마우스 오버 시 배경색 설정 */
+        }
+        .edit-link {
+            display: inline-block; /* 링크를 인라인 블록 요소로 표시 */
+            padding: 6px 12px; /* 링크 내부 여백 설정 */
+            background-color: #007bff; /* 배경색 설정 */
+            color: white; /* 텍스트 색상 설정 */
+            text-decoration: none; /* 밑줄 제거 */
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div>
+        <h1><a href="/"> 템플릿 목록 </a> </h1> <!-- 타이틀 링크 -->
+        <table border="1">
+            <thead>
+            <tr>
+                <th>템플릿 이름</th> <!-- 이름 헤더 -->
+                <th>수정한 일시</th> <!-- 수정한 일시 헤더 -->
+                <th style="width: 15%;"></th> <!-- 이동 버튼 헤더 -->
+            </tr>
+            </thead>
+            <tbody>
+            <!-- 반복문을 사용하여 템플릿 목록 출력 -->
+            <tr th:each="temp : ${temps}">
+                <td th:text="${temp.name}"></td> <!-- 이름 데이터 출력 -->
+                <td th:text="${temp.modified_time}"></td> <!-- 수정일시 데이터 출력 -->
+                <!-- 이동 버튼 링크 설정 -->
+                <td>  <a href="/pw" class="button">이동</a></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>
